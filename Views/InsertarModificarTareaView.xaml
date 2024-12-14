@@ -19,11 +19,13 @@
 
 
             <Label Text="Fecha Limite:" FontAttributes="Bold" TextColor="White"/>
-            <Frame Padding="0" BorderColor="Transparent" CornerRadius="10" Margin="0,0,0,15">
+            <Frame Padding="0" BorderColor="Transparent" CornerRadius="10" Margin="0,0,0,5">
                 <DatePicker MinimumDate="{Binding MinFecha}"
                             Date="{Binding FechaLimite}" 
                             Format="dd//MM/yyyy" BackgroundColor="#f1f1f1"/>
             </Frame>
+            <Label Text="Nota: Las tareas deben programarse con una fecha mayor a la actual." 
+                   FontAttributes="Bold" TextColor="White" Margin="0,0,0,15" FontSize="11"/>
 
             <Label Text="Estado:" FontAttributes="Bold" TextColor="White"/>
             <Frame Padding="0" BorderColor="Transparent" CornerRadius="10" Margin="0,0,0,15">

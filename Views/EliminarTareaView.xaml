@@ -41,10 +41,10 @@
                             <Grid RowSpacing="0" RowDefinitions="Auto" ColumnDefinitions="*,*,*,*" 
                                   VerticalOptions="FillAndExpand">
 
-                                <Label Text="{Binding Nombre}" Padding="3, 0, 0, 0" Grid.Row="0" Grid.Column="0"/>
-                                <Label Text="{Binding FechaLimite}" Grid.Row="0" Grid.Column="1"/>
-                                <Label Text="{Binding EstadoActual}" Grid.Row="0" Grid.Column="2"/>
-                                <CheckBox Grid.Row="0" Grid.Column="3" Color="#c78e57" 
+                                <Label Text="{Binding Nombre}" Padding="3, 0, 0, 0" Grid.Row="0" Grid.Column="0" VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding FechaLimite}" Grid.Row="0" Grid.Column="1" VerticalTextAlignment="Center"/>
+                                <Label Text="{Binding EstadoActual}" Grid.Row="0" Grid.Column="2" VerticalTextAlignment="Center"/>
+                                <CheckBox Grid.Row="0" Grid.Column="3" Color="#c78e57"
                                           IsChecked="{Binding TareaTerminada}" IsEnabled="False"/>
                                 <Grid.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding Source={x:RelativeSource 

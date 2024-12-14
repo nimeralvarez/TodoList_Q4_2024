@@ -38,6 +38,14 @@ namespace TodoList_Q4_2024.ViewModels
 
                     tarea.FechaLimite = fechaAnterior.ToString();
 
+                    if (tarea.EstadoActual == "Finalizada" && tarea.TareaTerminada==false)
+                    {
+                        tarea.TareaTerminada = true;
+                    }else if(tarea.EstadoActual != "Finalizada" && tarea.TareaTerminada == true)
+                    {
+                        tarea.TareaTerminada = false;
+                    }
+
                     TareaCollection.Add(tarea);
                 }
             }
