@@ -31,11 +31,14 @@ namespace TodoList_Q4_2024.ViewModels
         public void GetAll()
         {
             var getAll=service.GetAll();
+
+            InicioAppViewModel.porHacerContador = 0;
+            InicioAppViewModel.enProgresoContador = 0;
+            InicioAppViewModel.finalizadaContador = 0;
+
             if (getAll.Count > 0)
             {
-                InicioAppViewModel.porHacerContador = 0;
-                InicioAppViewModel.enProgresoContador = 0;
-                InicioAppViewModel.finalizadaContador = 0;
+                
                 TareaCollection.Clear();
                 foreach(var tarea in getAll)
                 {
