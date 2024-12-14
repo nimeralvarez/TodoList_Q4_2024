@@ -32,6 +32,12 @@ namespace TodoList_Q4_2024.ViewModels
                 TareaCollection.Clear();
                 foreach(var tarea in getAll)
                 {
+                    
+                    DateTime fecha = DateTime.Parse(tarea.FechaLimite);
+                    DateOnly fechaAnterior = DateOnly.FromDateTime(fecha);
+
+                    tarea.FechaLimite = fechaAnterior.ToString();
+
                     TareaCollection.Add(tarea);
                 }
             }
@@ -46,6 +52,7 @@ namespace TodoList_Q4_2024.ViewModels
         [RelayCommand]
         private async Task GotoEditInsertarModificarTareaView(Tarea tarea)
         {
+
             await App.Current!.MainPage!.Navigation.PushAsync(new InsertarModificarTareaView(tarea));
         }
 

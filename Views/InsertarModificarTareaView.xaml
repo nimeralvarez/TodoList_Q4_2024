@@ -10,42 +10,37 @@
              
              Title="">
     <ScrollView>
-        <VerticalStackLayout Padding="30" Spacing="2">
-            <Label Text="Id tarea:" FontAttributes="Bold"/>
-            <Frame Padding="0" BorderColor="Transparent" Margin="0,0,0,15">
-                <Entry Text="{Binding IdTarea}" IsReadOnly="True" BackgroundColor="#f1f1f1"/>
-            </Frame>
+        <VerticalStackLayout Padding="30" Spacing="2" BackgroundColor="#203344">
 
-            <Label Text="Nombre de la tarea:" FontAttributes="Bold"/>
-            <Frame Padding="0" BorderColor="Transparent" Margin="0,0,0,15">
+            <Label Text="Nombre de la tarea:" FontAttributes="Bold" TextColor="White"/>
+            <Frame Padding="0" BorderColor="Transparent" CornerRadius="10" Margin="0,0,0,15">
                 <Entry Text="{Binding Nombre}" BackgroundColor="#f1f1f1"/>
             </Frame>
-            
 
-            <Label Text="Fecha Limite:" FontAttributes="Bold"/>
-            <DatePicker MinimumDate="{Binding MinFecha}" 
-                        Date="{Binding FechaLimite}" 
-                        Format="dd//MM/yyyy" Margin="0,0,0,15"/>
-            <!-- <Label Text="{Binding FechaLimite}" TextColor="Red"/> -->
 
-            <Label Text="Estado:" FontAttributes="Bold"/>
-            <Picker 
+            <Label Text="Fecha Limite:" FontAttributes="Bold" TextColor="White"/>
+            <Frame Padding="0" BorderColor="Transparent" CornerRadius="10" Margin="0,0,0,15">
+                <DatePicker MinimumDate="{Binding MinFecha}"
+                            Date="{Binding FechaLimite}" 
+                            Format="dd//MM/yyyy" BackgroundColor="#f1f1f1"/>
+            </Frame>
+
+            <Label Text="Estado:" FontAttributes="Bold" TextColor="White"/>
+            <Frame Padding="0" BorderColor="Transparent" CornerRadius="10" Margin="0,0,0,15">
+                <Picker 
                 ItemsSource="{Binding listaEstado}"
-                    Title=""
-                    SelectedItem="{Binding EstadoActual}"
-                    Margin="0,0,0,15"
-            />
-            <!-- <Label Text="{Binding EstadoActual}" TextColor="Red"/> -->
+                    Title="Seleccionar estado"
+                    SelectedItem="{Binding EstadoActual}" BackgroundColor="#f1f1f1"/>
+            </Frame>
 
 
             <Grid RowDefinitions="*" ColumnDefinitions="*,*" HorizontalOptions="Start" Margin="0,0,0,15">
-                <CheckBox Grid.Row="0" Grid.Column="0" Color="Blue" IsChecked="{Binding TareaTerminada}"/>
-                <Label Grid.Row="0" Grid.Column="1" Text="Tarea terminada." VerticalTextAlignment="Center" FontAttributes="Bold"/>
+                <CheckBox Grid.Row="0" Grid.Column="0" Color="#c78e57" IsChecked="{Binding TareaTerminada}"/>
+                <Label Grid.Row="0" Grid.Column="1" Text="Tarea terminada." VerticalTextAlignment="Center" FontAttributes="Bold" TextColor="White"/>
             </Grid>
-            <!-- <Label Text="{Binding TareaTerminada}" TextColor="Red"/> -->
-                
-            
-            <Button Text="Guardar" Command="{Binding AddUpdateCommand}" BackgroundColor="Blue"></Button>
+
+
+            <Button Text="Guardar" Command="{Binding AddUpdateCommand}" BackgroundColor="#c78e57"></Button>
 
         </VerticalStackLayout>
     </ScrollView>

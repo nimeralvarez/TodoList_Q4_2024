@@ -2,12 +2,61 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TodoList_Q4_2024.Views.EliminarTareaView"
-             Title="EliminarTareaView">
+             
+             xmlns:viewModel="clr-namespace:TodoList_Q4_2024.ViewModels"
+             x:DataType="viewModel:ElimiarTareaViewModel"
+             
+             xmlns:model="clr-namespace:TodoList_Q4_2024.Models"
+             
+             
+             Title="Gestionar tareas">
 
     <ScrollView>
-        <VerticalStackLayout>
-            
-                
+        <VerticalStackLayout Padding="10" Spacing="2" >
+            <Button Text="Nueva Tarea" Command="{Binding GotoInsertarModificarTareaViewCommand}" BackgroundColor="#c78e57" Margin="0,0,0,10"/>
+
+                <Grid RowDefinitions="Auto" ColumnDefinitions="*,*,*,*" RowSpacing="20" Padding="5" BackgroundColor="#87abab">
+                    <Label Text="Tarea" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="White" 
+                           VerticalTextAlignment="Center" Grid.Column="0"/>
+
+                    <Label Text="Fecha limite" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="White" 
+                           VerticalTextAlignment="Center" Grid.Column="1"/>
+
+                    <Label Text="Estado actual" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="White" 
+                           VerticalTextAlignment="Center" Grid.Column="2"/>
+
+                    <Label Text="Terminada" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="White" 
+                           VerticalTextAlignment="Center" Grid.Column="3"/>
+
+                </Grid>
+
+
+            <CollectionView ItemsSource="{Binding TareaCollection}">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Tarea">
+                        <Border Stroke="#c7c7c7"
+                        StrokeThickness="1"
+                        StrokeShape="RoundRectangle 0,0,0,0"
+                        Background="Transparent">
+                            <Grid RowSpacing="0" RowDefinitions="Auto" ColumnDefinitions="*,*,*,*" 
+                                  VerticalOptions="FillAndExpand">
+
+                                <Label Text="{Binding Nombre}" Padding="3, 0, 0, 0" Grid.Row="0" Grid.Column="0"/>
+                                <Label Text="{Binding FechaLimite}" Grid.Row="0" Grid.Column="1"/>
+                                <Label Text="{Binding EstadoActual}" Grid.Row="0" Grid.Column="2"/>
+                                <CheckBox Grid.Row="0" Grid.Column="3" Color="#c78e57" 
+                                          IsChecked="{Binding TareaTerminada}" IsEnabled="False"/>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={x:RelativeSource 
+                                        AncestorType={x:Type viewModel:ElimiarTareaViewModel}},Path=SelectTareaCommand}" 
+                                        CommandParameter="{Binding .}"/>
+                                </Grid.GestureRecognizers>
+                            
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>

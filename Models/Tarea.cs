@@ -10,7 +10,7 @@ namespace TodoList_Q4_2024.Models
 
         [NotNull] public string FechaLimite { get; set; }
 
-        public string EstadoActual {  get; set; }
+        [NotNull] public string EstadoActual {  get; set; }
 
         public bool TareaTerminada { get; set; }
 

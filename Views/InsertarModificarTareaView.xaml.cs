@@ -18,4 +18,6 @@ public partial class InsertarModificarTareaView : ContentPage
 		viewModel=new InsertarModificarTareaViewModel(tarea);
 		BindingContext=viewModel;
 	}
+
+
 }

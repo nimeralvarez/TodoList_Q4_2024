@@ -12,7 +12,7 @@ namespace TodoList_Q4_2024
 
         protected override Window CreateWindow(IActivationState? activationState)
         {
-            return new Window(new NavigationPage( new InsertarModificarTareaView()));
+            return new Window(new NavigationPage( new EliminarTareaView()));
         }
     }
 }

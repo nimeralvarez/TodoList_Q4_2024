@@ -4,6 +4,7 @@ using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System;
 using System.Collections.ObjectModel;
+using System.Runtime.CompilerServices;
 using TodoList_Q4_2024.Models;
 using TodoList_Q4_2024.Services;
 
@@ -19,9 +20,16 @@ namespace TodoList_Q4_2024.ViewModels
 
         private readonly TareaService service;
 
-        /*Obtener la fecha Minima*/
+        /*Obtener la fecha Minima
+         * DateTime maneja Fevha y Hora
+         * DateOnly maneja Fecha
+         * TimeOnly maneja Hora
+         * DateOnly minFecha= DateOnly.FromDateTime(DateTime.Now);
+         */
 
-        [ObservableProperty] private DateTime minFecha= DateTime.Now;
+        [ObservableProperty] private DateTime minFecha= DateTime.Now.AddDays(-1);
+        
+        
 
         /*Crear las opciones de estados*/
         public ObservableCollection<string> listaEstado { get; set; }
@@ -72,7 +80,7 @@ namespace TodoList_Q4_2024.ViewModels
                 tarea.Nombre = Nombre;
                 tarea.FechaLimite = FechaLimite;
                 tarea.EstadoActual = EstadoActual;
-            tarea.TareaTerminada= TareaTerminada;
+                tarea.TareaTerminada= TareaTerminada;
 
                 if (Validar(tarea))
                 {
@@ -96,22 +104,38 @@ namespace TodoList_Q4_2024.ViewModels
 
         private bool Validar(Tarea tarea)
         {
+            
+            
+
             if (tarea.Nombre == null || tarea.Nombre == "")
             {
                 Alerta("ADVERTENCIA", "Ingrese el nombre de la tarea.");
                 return false;
-
-            }else if(tarea.FechaLimite==null || tarea.FechaLimite == "")
+            }else if(tarea.FechaLimite==null || tarea.FechaLimite== "")
             {
                 Alerta("ADVERTENCIA", "Debe de asignar una fecha limite a la tarea.");
                 return false;
-            }else if (tarea.EstadoActual==null || tarea.EstadoActual == "")
+            }
+            else if (tarea.EstadoActual==null || tarea.EstadoActual == "")
             {
-                Alerta("ADVERTENCIA", "Debe de asignar el estado actual a la tarea");
+                Alerta("ADVERTENCIA", "Debe de asignar el estado actual a la tarea.");
                 return false;
             }else
             {
-                return true;
+                DateTime fecha = DateTime.Parse(tarea.FechaLimite);
+                DateOnly fechaAnterior = DateOnly.FromDateTime(fecha);
+                DateOnly fechaActual = DateOnly.FromDateTime(DateTime.Now);
+
+                if (fechaAnterior < fechaActual)
+                {
+                    Alerta("ADVERTENCIA", "Debe modificar la fecha limite a una fecha mayor o igual a la fecha actual.");
+                    return false;
+                }
+                else
+                {
+                    return true;
+                }
+                
             }
             
         }
