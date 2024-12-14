@@ -9,11 +9,23 @@
              xmlns:model="clr-namespace:TodoList_Q4_2024.Models"
              
              
-             Title="Gestionar tareas">
+             Title="Gestionar tareas"
+             BackgroundColor="#f0ede4"
+             >
 
     <ScrollView>
         <VerticalStackLayout Padding="10" Spacing="2" >
-            <Button Text="Nueva Tarea" Command="{Binding GotoInsertarModificarTareaViewCommand}" BackgroundColor="#c78e57" Margin="0,0,0,10"/>
+            <Grid RowDefinitions="Auto" ColumnDefinitions="*,*" BackgroundColor="Transparent" Margin="0,0,0,0">
+                
+                <Button Grid.Row="0" Grid.Column="0" Text="Nueva Tarea" Command="{Binding GotoInsertarModificarTareaViewCommand}" 
+                        BackgroundColor="#c78e57" Margin="0,0,5,10"/>
+
+                <Button Grid.Row="0" Grid.Column="1" Text="Dashboard" Command="{Binding irInicioAppViewCommand}" 
+                 BackgroundColor="#b54845" Margin="5,0,0,10"/>
+
+
+            </Grid>
+            
 
                 <Grid RowDefinitions="Auto" ColumnDefinitions="*,*,*,*" RowSpacing="20" Padding="5" BackgroundColor="#87abab">
                     <Label Text="Tarea" FontAttributes="Bold" HorizontalTextAlignment="Center" TextColor="White" 

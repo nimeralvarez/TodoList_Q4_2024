@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="TodoList_Q4_2024.Views.InicioAppView"
+             
+             xmlns:viewModel="clr-namespace:TodoList_Q4_2024.ViewModels"
+             x:DataType="viewModel:InicioAppViewModel"
+             
+             Title="Inicio App de tareas"
+             BackgroundColor="#fafafa">
+    <ScrollView>
+        <Grid RowDefinitions="Auto,Auto,*" RowSpacing="15">
+
+            <Image Grid.Row="0" Source="tarea01" Aspect="AspectFit" HeightRequest="360"/>
+
+            <Frame Grid.Row="1" CornerRadius="20" BackgroundColor="White" HasShadow="False"
+            BorderColor="Transparent">
+
+                <Grid RowDefinitions="Auto,Auto,Auto,Auto" ColumnDefinitions="*,*,*" 
+                RowSpacing="10" Padding="20">
+
+                    <Label Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="3" Text="Programación II&#10;Grupo #2" 
+                    FontAttributes="Bold" FontSize="23"/>
+
+                    <Label Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" Text=" Ing. Roger Gurdián Castillo ✔️"
+                    TextColor="Silver"/>
+
+                    <Label Grid.Row="2" Grid.Column="0" Text="Por hacer" FontAttributes="Bold" 
+                    Padding="0,20,0,0" HorizontalTextAlignment="Center"/>
+
+                    <Label Grid.Row="2" Grid.Column="1" Text="En progreso" FontAttributes="Bold" 
+                    Padding="0,20,0,0" HorizontalTextAlignment="Center"/>
+
+                    <Label Grid.Row="2" Grid.Column="2" Text="Finalizada" FontAttributes="Bold" 
+                    Padding="0,20,0,0" HorizontalTextAlignment="Center"/>
+
+                    <!--Datos Estadísticos-->
+
+                    <Label Grid.Row="3" Grid.Column="0" Text="{Binding PorHacer}" FontSize="19" 
+                    HorizontalTextAlignment="Center"/>
+
+                    <Label Grid.Row="3" Grid.Column="1" Text="{Binding EnProgreso}" FontSize="19" 
+                    HorizontalTextAlignment="Center"/>
+
+                    <Label Grid.Row="3" Grid.Column="2" Text="{Binding Finalizada}" FontSize="19" 
+                    HorizontalTextAlignment="Center"/>
+                </Grid>
+            </Frame>
+
+            <Frame Grid.Row="2" BackgroundColor="#fdecd2" CornerRadius="20" BorderColor="Transparent"
+            HeightRequest="120" VerticalOptions="Center" Margin="0,-30" Padding="0">
+
+                <Grid RowDefinitions="Auto,Auto" ColumnDefinitions="auto,auto" Padding="10" RowSpacing="0"
+                VerticalOptions="Center" HorizontalOptions="Center">
+
+
+                    <Label Grid.Row="1" Grid.Column="0" Grid.RowSpan="2" Text="© 2024 Ceutec" FontSize="13" 
+                           HorizontalTextAlignment="Center" Padding="0,12,0,0"/>
+
+                    
+
+                </Grid>
+            </Frame>
+        </Grid>
+    </ScrollView>
+</ContentPage>
